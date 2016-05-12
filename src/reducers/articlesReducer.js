@@ -1,12 +1,6 @@
 import { REQUEST_ARTICLES, RESPONSE_ARTICLES, RESPONSE_ARTICLES_ERROR} from '../actions/actionTypes';
 
-const initialState = {
-  isFetching: false,
-  articles: [],
-  error: null
-};
-
-export default function articlesReducer(state = initialState, action){
+export default function articlesReducer(state, action){
   switch(action.type){
     case REQUEST_ARTICLES:
       return Object.assign({}, state, {
