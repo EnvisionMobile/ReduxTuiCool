@@ -1,0 +1,17 @@
+.form{
+    background: lightgoldenrodyellow;
+    padding: 10px;
+}
+.title{
+    font-size: 1.5rem;
+    color: #2e2e2e;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content{
+    font-size: 0.8rem;
+    color: #203c31;
+    line-height: 1.5rem;
+}

@@ -5,9 +5,10 @@ export default class ArticleCell extends Component {
   render() {
     const {id, title, feed_title, img} = this.props.article;
     return (
-      <li className={styles.listItem} key={id}>
+      <li className={styles.listItem}>
         <div className={styles.title}>{title}</div>
         <div className={styles.from}>{feed_title}</div>
+        <div className={styles.rightArrow} onClick={() => { this.props.onClick && this.props.onClick(id);}}> > </div>
         {
           img ? <img width={100} height={100} src={img}></img> : ''
         }
@@ -17,5 +18,6 @@ export default class ArticleCell extends Component {
 }
 
 ArticleCell.propTypes = {
-  article: PropTypes.object
+  article: PropTypes.object,
+  onClick: PropTypes.func
 };

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import ArticleCell from '../components/ArticleCell';
 import Loading from '../components/Loading';
 
 import styles from './ArticleList.css';
 
-import {readArticles} from '../actions/articlesAction'
+import {readArticles} from '../actions/articlesAction';
 
 class ArticleList extends Component {
   componentDidMount(){
@@ -16,11 +16,11 @@ class ArticleList extends Component {
     return (
       <div className="article-list-form">
         <div className="list">
-          <ul>
+          <ul className={styles.ul}>
             {
-              this.props.articles.map(function(article) {
-                return (<ArticleCell article={article}/>);
-              })
+              this.props.articles.map(article =>
+                <ArticleCell key={article.id} article={article} onClick={this._goToDetail.bind(this)}/>
+              )
             }
           </ul>
         </div>
@@ -36,18 +36,25 @@ class ArticleList extends Component {
     const lastId = this.props.articles.length > 0 ? this.props.articles[this.props.articles.length - 1].id : null;
     this.props.dispatch(readArticles(lastId));
   }
+
+  _goToDetail(articleId){
+    this.props.history.pushState(null, `/detail/${articleId}`);
+  }
 }
+
+ArticleList.propTypes = {
+  isFetching: PropTypes.boolean,
+  articles: PropTypes.array,
+  dispatch: PropTypes.func,
+  history: PropTypes.any
+};
 
 /**
  * 从应用的全局状态中,选择一部分映射到当前Component的props上
  * @param state
  */
 function mapStateToProps(state){
-  return {
-    isFetching: state.isFetching,
-    articles: state.articles,
-    error: state.error
-  };
+  return state.articles;
 }
 
 export default connect(mapStateToProps)(ArticleList);

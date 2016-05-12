@@ -1,23 +1,23 @@
-import { REQUEST_ARTICLES, RESPONSE_ARTICLES, RESPONSE_ARTICLES_ERROR} from '../actions/actionTypes';
+import { REQUEST_ARTICLE_DETAIL, RESPONSE_ARTICLE_DETAIL, RESPONSE_ARTICLE_DETAIL_ERROR} from '../actions/actionTypes';
 
 const initialState = {
   isFetching: false,
-  articles: [],
+  article: {},
   error: null
 };
 
 export default function articlesReducer(state = initialState, action){
   switch(action.type){
-    case REQUEST_ARTICLES:
+    case REQUEST_ARTICLE_DETAIL:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RESPONSE_ARTICLES:
+    case RESPONSE_ARTICLE_DETAIL:
       return Object.assign({}, state, {
         isFetching: false,
-        articles: state.articles.slice(0).concat(action.data)
+        article: action.data
       });
-    case RESPONSE_ARTICLES_ERROR:
+    case RESPONSE_ARTICLE_DETAIL_ERROR:
       return Object.assign({}, state, {
         error: 'error'
       });
