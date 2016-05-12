@@ -15,7 +15,7 @@ export default function articlesReducer(state = initialState, action){
     case RESPONSE_ARTICLES:
       return Object.assign({}, state, {
         isFetching: false,
-        articles: action.data
+        articles: state.articles.slice(0).concat(action.data)
       });
     case RESPONSE_ARTICLES_ERROR:
       return Object.assign({}, state, {

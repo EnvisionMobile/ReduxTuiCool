@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Loading from '../components/Loading';
 import ArticleCell from '../components/ArticleCell';
+import Loading from '../components/Loading';
+
+import styles from './ArticleList.css';
 
 import {readArticles} from '../actions/articlesAction'
 
@@ -22,9 +24,17 @@ class ArticleList extends Component {
             }
           </ul>
         </div>
-        <Loading/>
+        {
+          this.props.isFetching ? <Loading/> : ''
+        }
+        <div className={styles.loadMore} onClick={this._onLoadMore.bind(this)}>加载更多</div>
       </div>
     );
+  }
+
+  _onLoadMore(){
+    const lastId = this.props.articles.length > 0 ? this.props.articles[this.props.articles.length - 1].id : null;
+    this.props.dispatch(readArticles(lastId));
   }
 }
 

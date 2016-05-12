@@ -26,8 +26,11 @@ module.exports = {
       loader: 'react-hot-loader!babel-loader',
       include: path.join(__dirname, 'src')
     }, {
+      test: /\.less/,
+      loader: 'style-loader!css-loader!less-loader'
+    }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader'
+      loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url-loader?limit=8192'

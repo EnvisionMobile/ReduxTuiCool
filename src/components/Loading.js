@@ -1,14 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+require('./Loading.less');
+
 
 export default class Loading extends Component {
   render() {
     return (
-      this.props.show ?
-      <div className="loading-indicator"></div> : <div></div>
+      <div className="loader-container show">
+        <div className="loading-anim">
+          <div className="circle no1"></div>
+          <div className="circle no2"></div>
+          <div className="circle no3"></div>
+          <div className="circle no4"></div>
+        </div>
+      </div>
     );
   }
 }
-
-Loading.propTypes = {
-  show: PropTypes.bool
-};
