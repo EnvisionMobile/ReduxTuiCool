@@ -1,0 +1,12 @@
+{
+  "extends": "./node_modules/eslint-config-airbnb/.eslintrc",
+  "rules": {
+  	"no-undef": 2, // disallow use of undeclared variables unless mentioned in a /*global */ block
+    "comma-dangle": [2, "never"],
+    "no-else-return": 0,
+    "space-after-keywords": 0,
+    "space-before-blocks": 0,
+    "no-trailing-spaces": 0,
+    "indent": 0
+  }
+}
